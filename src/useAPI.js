@@ -19,7 +19,7 @@ export function useAPI({url, fetchOptions, handleError}) {
         newFilter.page = params && params.page ? params.page : 1;
         const res = await request(url, {...fetchOptions, body: newFilter}, handleError);
         setLoading(false);
-        if(!res.error) {
+        if(res && !res.error) {
             setData(res);
             setFilter(newFilter);
         }
@@ -29,7 +29,7 @@ export function useAPI({url, fetchOptions, handleError}) {
         setLoading(true);
         const res = await request(url, {...fetchOptions, body: params, method: 'POST'}, handleError);
         setLoading(false);
-        if(!res.error) {
+        if(res && !res.error) {
             read();
         }
     }
@@ -38,7 +38,7 @@ export function useAPI({url, fetchOptions, handleError}) {
         setLoading(true);
         const res = await request(`${url}/${key}`, {...fetchOptions, body: params, method: 'PUT'}, handleError);
         setLoading(false);
-        if(!res.error) {
+        if(res && !res.error) {
             read();
         }
     }
@@ -47,7 +47,7 @@ export function useAPI({url, fetchOptions, handleError}) {
         setLoading(true);
         const res = await request(`${url}/${key}`, {...fetchOptions, method: 'DELETE'}, handleError);
         setLoading(false);
-        if(!res.error) {
+        if(res && !res.error) {
             read();
         }
     }

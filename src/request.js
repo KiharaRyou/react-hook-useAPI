@@ -1,3 +1,15 @@
+function jsonToQuery(json) {
+    let query = '';
+    const keys = Object.keys(json);
+    keys.forEach((item,i) => {
+        query += `${item}=${json[item]}`;
+        if(i + 1 !== keys.length) {
+            query += '&';
+        }
+    })
+    return query;
+}
+
 export default (url, options, handleError) => {
   const defaultOptions = {
     credentials: 'include',
@@ -10,6 +22,11 @@ export default (url, options, handleError) => {
         ...newOptions.headers,
       };
       newOptions.body = JSON.stringify(newOptions.body);
+  } else {
+    if(newOptions.body) {
+        url = `${url}?${jsonToQuery(newOptions.body)}`;
+        delete newOptions.body;
+    }
   }
 
   return fetch(url, newOptions)
