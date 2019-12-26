@@ -3,8 +3,8 @@ import { useAPI } from '../src';
 
 const App = () => {
     
- const { data, read } = useAPI({ 
-        url: '/api/tasks/',
+ const { data, create, read, update, del } = useAPI({ 
+        url: '/api/tasks',
         handleError: res => {
             console.log(res.status);
         }
@@ -22,15 +22,21 @@ const App = () => {
                 <tr>
                     <th>Title</th>
                     <th>Description</th>
+                    <th>Operations</th>
                 </tr>    
             </thead>
             <tbody>
                 {data.results.map(task => <tr key={task.id}>
                     <td>{task.title}</td>
-                    <td>{task.description}</td>
+                    <td style={{width: '50%'}}>{task.description}</td>
+                    <td>
+                        <a className="button" onClick={() => update(task.id, task)}>Update</a>
+                        <a className="button del_button" onClick={() => del(task.id)}>Delete</a>
+                    </td>
                 </tr>)}   
             </tbody>
         </table>
+        <a className="button" onClick={() => create({test: 'test'})}>Create</a>
     </div> 
   )
 }
