@@ -3,12 +3,14 @@ import request from './request';
 
 export function useAPI({url, fetchOptions, handleError}) {
    
-    const [data, setData] = useState([]);
+    const [data, setData] = useState({
+        results: []
+    });
     
     const read = async params => {
         const res = await request(url, { body: params, ...fetchOptions }, handleError);
         if(!res.error) {
-            setData(res.results);
+            setData(res);
         }
     }
 

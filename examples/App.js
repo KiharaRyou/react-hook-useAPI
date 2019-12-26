@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useAPI } from '../src/useAPI';
+import { useAPI } from '../src';
 
 const App = () => {
     
@@ -25,7 +25,7 @@ const App = () => {
                 </tr>    
             </thead>
             <tbody>
-                {data.map(task => <tr key={task.id}>
+                {data.results.map(task => <tr key={task.id}>
                     <td>{task.title}</td>
                     <td>{task.description}</td>
                 </tr>)}   
