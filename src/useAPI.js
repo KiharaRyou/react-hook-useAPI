@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import request from './request';
+import { urlWithKey } from './utils';
 
 export function useAPI({url, fetchOptions, handleError}) {
    
@@ -22,6 +23,7 @@ export function useAPI({url, fetchOptions, handleError}) {
         if(res && !res.error) {
             setData(res);
             setFilter(newFilter);
+            return res;
         }
     }
 
@@ -31,24 +33,27 @@ export function useAPI({url, fetchOptions, handleError}) {
         setLoading(false);
         if(res && !res.error) {
             read();
+            return res;
         }
     }
 
     const update = async(key, params) => {
         setLoading(true);
-        const res = await request(`${url}/${key}`, {...fetchOptions, body: params, method: 'PUT'}, handleError);
+        const res = await request(urlWithKey(url, key), {...fetchOptions, body: params, method: 'PUT'}, handleError);
         setLoading(false);
         if(res && !res.error) {
             read();
+            return res;
         }
     }
 
     const del = async key => {
         setLoading(true);
-        const res = await request(`${url}/${key}`, {...fetchOptions, method: 'DELETE'}, handleError);
+        const res = await request(urlWithKey(url, key), {...fetchOptions, method: 'DELETE'}, handleError);
         setLoading(false);
         if(res && !res.error) {
             read();
+            return res;
         }
     }
 

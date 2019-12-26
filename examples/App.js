@@ -4,7 +4,7 @@ import { useAPI } from '../src';
 const App = () => {
     
  const { data, create, read, update, del } = useAPI({ 
-        url: '/api/tasks',
+        url: '/api/tasks/',
         handleError: res => {
             console.log(res.status);
         }
