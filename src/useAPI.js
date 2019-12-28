@@ -27,6 +27,15 @@ export function useAPI({url, fetchOptions, handleError}) {
         }
     }
 
+    const getDetail = async key => {
+        setLoading(true);
+        const res = await request(urlWithKey(url, key), {...fetchOptions, body: newFilter}, handleError);
+        setLoading(false);
+        if(res && !res.error) {
+            return res;
+        }
+    }
+
     const create = async params => {
         setLoading(true);
         const res = await request(url, {...fetchOptions, body: params, method: 'POST'}, handleError);
@@ -62,6 +71,7 @@ export function useAPI({url, fetchOptions, handleError}) {
         data,
         del: useCallback(del, []),
         filter,
+        getDetail: useCallback(getDetail, []),
         loading,
         read: useCallback(read, []),
         update: useCallback(update, [])
