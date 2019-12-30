@@ -1,9 +1,8 @@
 {
-  "name": "react-hooks-useapi",
+  "name": "react-hook-useapi",
   "version": "0.1.0",
   "description": "A compoent for handle restful api",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -23,10 +22,9 @@
   "homepage": "https://github.com/KiharaRyou/react-hooks-useAPI#readme",
   "scripts": {
     "start": "webpack-dev-server --env.mode development --color true --config ./config/webpack.config.js --open",
-    "clean": "yarn cleandir dist",
     "lint": "eslint src --ext .js --max-warnings 0",
     "lint:commit": "eslint --max-warnings 0",
-    "prepublish": "yarn clean && yarn babel src --ignore **/*.test.js --out-dir dist"
+    "prepublish": "yarn babel src --ignore **/*.test.js --out-dir dist"
   },
   "lint-staged": {
     "*.js": [
