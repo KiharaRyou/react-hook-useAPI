@@ -25,3 +25,4 @@ tags
 [._]*.un~
 
 yarn.lock
+yarn-error.log

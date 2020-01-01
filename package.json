@@ -1,6 +1,6 @@
 {
   "name": "react-hook-useapi",
-  "version": "0.1.0",
+  "version": "0.1.10",
   "description": "A compoent for handle restful api",
   "main": "dist/index.js",
   "files": [
@@ -24,7 +24,7 @@
     "start": "webpack-dev-server --env.mode development --color true --config ./config/webpack.config.js --open",
     "lint": "eslint src --ext .js --max-warnings 0",
     "lint:commit": "eslint --max-warnings 0",
-    "prepublish": "yarn babel src --ignore **/*.test.js --out-dir dist"
+    "prepublish": "rimraf dist && yarn babel src --ignore **/*.test.js --out-dir dist"
   },
   "lint-staged": {
     "*.js": [
@@ -58,7 +58,6 @@
     "babel-loader": "^8.0.4",
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.3",
-    "clean-dir": "^1.0.3",
     "clean-webpack-plugin": "^0.1.19",
     "compression-webpack-plugin": "^2.0.0",
     "copy-webpack-plugin": "^4.5.4",
