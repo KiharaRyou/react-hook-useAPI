@@ -27,7 +27,7 @@ del|function|Function(key) The function use to delete item
 # Example
 ```
 import React, { useEffect } from 'react';
-import { useAPI } from 'react-hook-useapi';
+import useAPI from 'react-hook-useapi';
 
 export default const App = () => {
     

@@ -1,6 +1,6 @@
 {
   "name": "react-hook-useapi",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "A compoent for handle restful api",
   "main": "dist/index.js",
   "files": [

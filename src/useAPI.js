@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import request from './request';
 import { urlWithKey } from './utils';
 
-export function useAPI({url, fetchOptions, handleError}) {
+export default function useAPI({url, fetchOptions, handleError}) {
    
     const [data, setData] = useState({
         results: []

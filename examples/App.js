@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useAPI } from '../src';
+import useAPI from '../src';
 
 const App = () => {
     

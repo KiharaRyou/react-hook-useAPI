@@ -1,3 +1,3 @@
-import React from 'react';
+import useAPI from './useAPI';
 
-export { useAPI } from './useAPI';
+export default useAPI;
